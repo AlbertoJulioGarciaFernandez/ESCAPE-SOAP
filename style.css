@@ -22,8 +22,13 @@ td {
     background-color: darkgreen;
     height: 30px;
     width: 30px;
+  
 }
 
 .soap {
  background-color: aqua;
+}
+
+.safe-area td {
+    background-color: blue;
 }

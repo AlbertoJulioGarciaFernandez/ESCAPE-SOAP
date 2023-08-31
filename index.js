@@ -1,3 +1,8 @@
+import { Obstacles } from "./obstacles.js"
+
+
+
+
 //PlAYER FUNCTION 
 
 function Soap() {
@@ -35,7 +40,6 @@ function Soap() {
 
                     alert('YOU WIN!')
  
-
                 
                 }
 
@@ -72,3 +76,4 @@ objSoap.draw()
 
 
 window.addEventListener("keydown", objSoap.move)
+
