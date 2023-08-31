@@ -1,6 +1,6 @@
 #canvas {
 
-    width: 600px;
+    width: 720px;
     background-color: green;
     margin: 0 auto;
     margin-top: 5vh;
@@ -22,4 +22,8 @@ td {
     background-color: darkgreen;
     height: 30px;
     width: 30px;
+}
+
+.soap {
+ background-color: aqua;
 }
