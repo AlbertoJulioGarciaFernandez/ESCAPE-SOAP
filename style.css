@@ -1,0 +1,25 @@
+#canvas {
+
+    width: 600px;
+    background-color: green;
+    margin: 0 auto;
+    margin-top: 5vh;
+    position: relative;
+}
+
+#rana {
+    height: 30px;
+    width: 30px;
+    background-color: blueviolet;
+    position: absolute;
+    bottom: 0px;
+    left: 485px;
+}
+
+
+
+td {
+    background-color: darkgreen;
+    height: 30px;
+    width: 30px;
+}
