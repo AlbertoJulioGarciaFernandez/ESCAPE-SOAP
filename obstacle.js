@@ -22,7 +22,6 @@ function Obstacle() {
         }
         self.obsCell = document.querySelector(`.row${self.y} .column${self.x}`)
         self.obsCell.classList.add("obs1")
-
     }
 
     this.spawn = function () {
@@ -41,11 +40,6 @@ function Obstacle() {
 
 
 }
-
-
-var obstacle1 = new Obstacle()
-obstacle1.drawOddRow()
-obstacle1.spawn()
 
 export { Obstacle }
 

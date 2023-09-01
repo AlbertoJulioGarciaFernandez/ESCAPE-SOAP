@@ -1,4 +1,4 @@
-function Soap() {
+function Soap(enemy) {
     var self = this
     this.x = 11
     this.y = 20

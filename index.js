@@ -1,7 +1,13 @@
 import { Obstacle } from "./obstacle.js"
 import { Soap } from "./soap.js"
 
-var objSoap = new Soap()
+
+
+var obstacle1 = new Obstacle()
+obstacle1.drawOddRow()
+
+obstacle1.spawn()
+var objSoap = new Soap(obstacle1)
 
 objSoap.draw()
 
