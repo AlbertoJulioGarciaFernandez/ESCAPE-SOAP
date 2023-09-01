@@ -1,4 +1,4 @@
-import { Obstacles } from "./obstacles.js"
+import { Obstacle } from "./obstacle.js"
 
 function Soap() {
     var self = this
@@ -51,8 +51,10 @@ function Soap() {
 }
 
 var objSoap = new Soap()
+
 objSoap.draw()
 
-
 window.addEventListener("keydown", objSoap.move)
+
+
 
