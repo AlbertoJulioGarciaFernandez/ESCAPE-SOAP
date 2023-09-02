@@ -2,7 +2,7 @@ function Obstacle() {
     var self = this
     this.x = 1
     this.y = 17
-    this.speed = 500 //32
+    this.speed = 500
     this.timerId
     this.obsCell
     // this.randomPosLeft = Math.random() 
@@ -27,17 +27,6 @@ function Obstacle() {
     this.spawn = function () {
         this.timerId = setInterval(this.move, this.speed)
     }
-
-    
-
-
-
-
-
-
-
-
-
 
 }
 

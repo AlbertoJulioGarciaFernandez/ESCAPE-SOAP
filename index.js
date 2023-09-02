@@ -1,18 +1,24 @@
 import { Obstacle } from "./obstacle.js"
 import { Soap } from "./soap.js"
 
+var gameOver = false;
 
+function setGameOver(value) {
+    gameOver = value;
+}
 
 var obstacle1 = new Obstacle()
-obstacle1.drawOddRow()
-
-obstacle1.spawn()
 var objSoap = new Soap(obstacle1)
 
+var timerId = setInterval(gameLoop, 100)
+
+obstacle1.drawOddRow()
 objSoap.draw()
+obstacle1.spawn()
+
+
 
 window.addEventListener("keydown", function (e) {
-   
     switch (e.key) {
         case "w":
             objSoap.direction = "up"
@@ -24,18 +30,20 @@ window.addEventListener("keydown", function (e) {
             objSoap.direction = "right"
             break;
     }
- 
+
 })
 window.addEventListener("keyup", function (e) {
-
     objSoap.direction = null
 
 })
 
-function gameLoop(){
-  
-    objSoap.collision()
-    objSoap.move()
+function gameLoop() {
+    if (!gameOver) {
+        objSoap.collision()
+        objSoap.move()
+    }
 }
 
-var timerId = setInterval(gameLoop,100)
+
+
+export { gameOver, setGameOver }
