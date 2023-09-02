@@ -1,30 +1,32 @@
 function Obstacle() {
-    var self = this
-    this.x = 1
-    this.y = 17
-    this.speed = 500
-    this.timerId
-    this.obsCell
+    var self = this;
+    this.x = 1;
+    this.y = 17;
+    this.speed = 500;
+    this.timerId;
+    this.obsCell;
 
     this.drawOddRow = function () {
-        this.obsCell = document.querySelector(`.row${self.y} .column${self.x}`)
-        this.obsCell.classList.add("obs1")
-    }
+        this.obsCell = document.querySelector(`.row${self.y} .column${self.x}`);
+        this.obsCell.classList.add("obs1");
+    };
 
     this.move = function () {
-        self.obsCell.classList.remove("obs1")
+        self.obsCell.classList.remove("obs1");
+
         if (self.x < 21) {
-            self.x++
+            self.x++;
         } else {
             self.x = 1;
         }
-        self.obsCell = document.querySelector(`.row${self.y} .column${self.x}`)
-        self.obsCell.classList.add("obs1")
-    }
+
+        self.obsCell = document.querySelector(`.row${self.y} .column${self.x}`);
+        self.obsCell.classList.add("obs1");
+    };
 
     this.spawn = function () {
-        this.timerId = setInterval(this.move, this.speed)
-    }
+        this.timerId = setInterval(this.move, this.speed);
+    };
 
 }
 
