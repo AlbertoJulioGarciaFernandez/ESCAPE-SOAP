@@ -22,17 +22,21 @@ td {
     background-color: darkgreen;
     height: 30px;
     width: 30px;
-  
+
 }
 
 .soap {
- background-color: aqua;
+    background-color: aqua;
 }
 
 .safe-area td {
     background-color: blue;
 }
 
-.obs1{
+.obs1 {
     background-color: red;
+}
+
+.obs2 {
+    background-color: yellow;
 }

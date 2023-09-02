@@ -16,7 +16,7 @@ function Soap(enemy) {
 
             var frontCell = self.y;
             frontCell -= 1;
-
+            
             if (self.y > 1) {
                 var checkEnemy = document.querySelector(`.row${frontCell} .column${self.x}`);
                 if (checkEnemy.classList.contains("obs1")) {
@@ -35,6 +35,7 @@ function Soap(enemy) {
                 setGameOver(true);
             }
         }
+
         var rightCell = self.x;
         rightCell += 1;
 
@@ -46,7 +47,6 @@ function Soap(enemy) {
         }
 
     }
-
     this.move = function () {
         self.collision();
         switch (self.direction) {
