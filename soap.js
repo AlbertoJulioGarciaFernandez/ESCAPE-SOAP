@@ -20,7 +20,6 @@ function Soap(enemy) {
                     var checkEnemy = document.querySelector(`.row${frontCell} .column${self.x}`);
                     if (checkEnemy.classList.contains("obs1")) {
                         setGameOver(true);
-                        alert('GAME OVER');
                     }
                 }
             }
@@ -30,8 +29,7 @@ function Soap(enemy) {
             if (self.x > 1) {
                 var checkEnemy = document.querySelector(`.row${self.y} .column${leftCell}`);
                 if (checkEnemy.classList.contains("obs1")) {
-                    setGameOver(true)
-                    alert('GAME OVER');
+                    setGameOver(true);
                 }
             }
 
@@ -41,15 +39,14 @@ function Soap(enemy) {
                 var checkEnemy = document.querySelector(`.row${self.y} .column${rightCell}`);
                 if (checkEnemy.classList.contains("obs1")) {
                     setGameOver(true)
-                    alert('GAME OVER');
                 }
             }
         }
     }
 
     this.move = function () {
-            self.collision()
-            if (!gameOver) {
+        self.collision()
+        if (!gameOver) {
             switch (self.direction) {
                 case "up":
                     var soapCell = document.querySelector(`.row${self.y} .column${self.x}`)
@@ -58,7 +55,6 @@ function Soap(enemy) {
                     soapCell = document.querySelector(`.row${self.y} .column${self.x}`)
                     soapCell.classList.add("soap")
                     if (self.y === 1) {
-                        
                         alert('YOU WIN!')
                     }
                     break;

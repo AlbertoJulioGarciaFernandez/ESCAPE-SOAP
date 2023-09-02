@@ -5,8 +5,6 @@ function Obstacle() {
     this.speed = 500
     this.timerId
     this.obsCell
-    // this.randomPosLeft = Math.random() 
-
 
     this.drawOddRow = function () {
         this.obsCell = document.querySelector(`.row${self.y} .column${self.x}`)
@@ -16,9 +14,9 @@ function Obstacle() {
     this.move = function () {
         self.obsCell.classList.remove("obs1")
         if (self.x < 21) {
-            self.x++            
+            self.x++
         } else {
-            self.x = 1;            
+            self.x = 1;
         }
         self.obsCell = document.querySelector(`.row${self.y} .column${self.x}`)
         self.obsCell.classList.add("obs1")
@@ -31,5 +29,3 @@ function Obstacle() {
 }
 
 export { Obstacle }
-
-

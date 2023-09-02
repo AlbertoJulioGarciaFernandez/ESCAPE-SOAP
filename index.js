@@ -5,18 +5,18 @@ var gameOver = false;
 
 function setGameOver(value) {
     gameOver = value;
+    if (gameOver) {
+        alert('GAME OVER');
+    }
 }
 
-var obstacle1 = new Obstacle()
-var objSoap = new Soap(obstacle1)
+var obstacle1 = new Obstacle(),
+    objSoap = new Soap(obstacle1),
+    timerId = setInterval(gameLoop, 100);
 
-var timerId = setInterval(gameLoop, 100)
-
-obstacle1.drawOddRow()
-objSoap.draw()
-obstacle1.spawn()
-
-
+obstacle1.drawOddRow();
+objSoap.draw();
+obstacle1.spawn();
 
 window.addEventListener("keydown", function (e) {
     switch (e.key) {
@@ -30,11 +30,9 @@ window.addEventListener("keydown", function (e) {
             objSoap.direction = "right"
             break;
     }
-
 })
 window.addEventListener("keyup", function (e) {
-    objSoap.direction = null
-
+    objSoap.direction = null;
 })
 
 function gameLoop() {
@@ -43,7 +41,5 @@ function gameLoop() {
         objSoap.move()
     }
 }
-
-
 
 export { gameOver, setGameOver }
