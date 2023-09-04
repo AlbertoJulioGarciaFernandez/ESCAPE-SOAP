@@ -5,7 +5,7 @@ var gameOver = false,
     obstacle1 = new RedObstacles(),
     obstacle2 = new YellowObstacles(),
     
-    objSoap = new Soap(obstacle1),
+    objSoap = new Soap(),
     timerId = setInterval(gameLoop, 100),
     timerIdRed = setInterval(redObstacles, 1800),
     timerIdYellow = setInterval(yellowObstacles,2000),
@@ -33,18 +33,25 @@ function yellowObstacles() {
     }
 }
 
+// ENEMIGOS AMARILLOS
+function pinkObstacles() {
+    for (let fila = 9; fila > 2; fila -= 2) {
+        if (Math.ceil(Math.random() * 3) > 1) {
+            var obstacle = new PinkObstacles(fila);
+            obstacle.spawn();
+    }
+    }
+}
+
 function setGameOver(value) {
     gameOver = value;
-
     if (gameOver) {
         alert('GAME OVER');
     }
 }
 
-// obstacle1.drawOddRow();
-// obstacle1.drawEvenRow();
+
 objSoap.draw();
-// obstacle1.spawn();
 
 window.addEventListener("keydown", function (e) {
     switch (e.key) {

@@ -11,7 +11,7 @@ function Soap() {
         soapCell.classList.add("soap");
     }
 
-    /*this.collision = function () {
+    this.collision = function () {
         if (self.direction === 'up') {
 
             var frontCell = self.y;
@@ -44,10 +44,10 @@ function Soap() {
                 setGameOver(true);
             }
         }
-    }*/
+    }
     this.move = function () {
-
-       /* self.collision();*/
+        console.log(self.direction)
+        self.collision();
         switch (self.direction) {
             case "up":
                 var soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
