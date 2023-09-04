@@ -1,30 +1,36 @@
-import { Obstacle } from "./obstacle.js"
+import { RedObstacles } from "./redobstacle.js"
 import { Soap } from "./soap.js"
-
+import { YellowObstacles } from "./yellowobstacle.js"
 var gameOver = false,
-    obstacle1 = new Obstacle(),
+    obstacle1 = new RedObstacles(),
+    obstacle2 = new YellowObstacles(),
+    
     objSoap = new Soap(obstacle1),
     timerId = setInterval(gameLoop, 100),
+    timerIdRed = setInterval(redObstacles, 1000),
+    timerIdYellow = setInterval(yellowObstacles,1000),
     leftCol = 1,
-    rightCol = 21,
-    xArrCoord = [];
+    rightCol = 21;
 
 // Instanciación de los obstáculos filas impares (sección inferior)
-for (let fila = 17; fila >= 11; fila -= 2) {
-    var obsCell = document.querySelector(`.row${fila} .column${leftCol}`),
-        obstacle = new Obstacle(obsCell, fila, leftCol, rightCol);
-
-    obsCell.classList.add("obs1");
-    obstacle.drawOddRow();
+function redObstacles() {
+    for (let fila = 17; fila >= 11; fila -= 2) {
+        if (Math.round(Math.random() * 10) === 3) {
+            var obstacle = new RedObstacles(fila);
+            obstacle.spawn();
+        }
+    }
 }
 
 // Instanciación de los obstáculos filas pares (sección inferior)
-for (let fila = 16; fila > 10; fila -= 2) {
-    xArrCoord = [rightCol, rightCol - 1, rightCol - 2];
-    var obsCell = null,
-        obstacle = new Obstacle(obsCell, fila, rightCol);
-
-    obstacle.drawEvenRow();
+// ENEMIGOS AMARILLOS
+function yellowObstacles() {
+    for (let fila = 16; fila > 10; fila -= 2) {
+        if (Math.round(Math.random() * 8) === 2) {
+            var obstacle = new YellowObstacles(fila);
+            obstacle.spawn();
+    }
+    }
 }
 
 function setGameOver(value) {
@@ -65,4 +71,4 @@ function gameLoop() {
     }
 }
 
-export { gameOver, setGameOver, xArrCoord }
+export { gameOver, setGameOver }
