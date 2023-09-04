@@ -12,11 +12,11 @@ function YellowObstacles(fila) {
         for (let i = 0; i < self.obsCells.length; i++) {
             self.obsCells[i]--;
         }
-        self.obsCells[0]
+        /*self.obsCells[0]
         var head = document.querySelector(`.row${self.oddY} .column${self.obsCells[0]}`);
             if (head.classList.contains("soap")){
                 alert("Kicked")
-            }
+            }*/
         self.draw();
     };
 

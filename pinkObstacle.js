@@ -2,10 +2,10 @@ function PinkObstacles(fila){
     var self = this;
     this.oddY = fila;
     this.oddX = 21;
-    this.length = 3;
-    this.speed = 400;
+    this.length = 4;
+    this.speed = 1000;
     this.timerId;
-    this.obsCells = []; //this.obsCells = [21, 22, 23]
+    this.obsCells = []; //this.obsCells = [21, 22, 23, 24]
 
     this.move = function () {
         self.erase();
@@ -20,7 +20,7 @@ function PinkObstacles(fila){
             var column = this.obsCells[i]
             if (column >= 1 && column <= 21) {
                 var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
-                newCell.classList.add("obs2");
+                newCell.classList.add("obs3");
             }
         }
     }
@@ -30,7 +30,7 @@ function PinkObstacles(fila){
             var column = this.obsCells[i]
             if (column >= 1 && column <= 21) {
                 var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
-                newCell.classList.remove("obs2");
+                newCell.classList.remove("obs3");
             }
         }
     }
@@ -43,3 +43,5 @@ function PinkObstacles(fila){
         this.timerId = setInterval(this.move, this.speed);
     };
 }
+
+export { PinkObstacles }
