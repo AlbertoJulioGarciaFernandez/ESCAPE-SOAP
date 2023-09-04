@@ -7,17 +7,6 @@
     position: relative;
 }
 
-#rana {
-    height: 30px;
-    width: 30px;
-    background-color: blueviolet;
-    position: absolute;
-    bottom: 0px;
-    left: 485px;
-}
-
-
-
 td {
     background-color: darkgreen;
     height: 30px;
@@ -27,6 +16,7 @@ td {
 
 .soap {
     background-color: aqua;
+    background-image: url(./Imágenes/pixil-frame-0.jpg);
 }
 
 .safe-area td {

@@ -7,15 +7,15 @@ var gameOver = false,
     
     objSoap = new Soap(obstacle1),
     timerId = setInterval(gameLoop, 100),
-    timerIdRed = setInterval(redObstacles, 1000),
-    timerIdYellow = setInterval(yellowObstacles,1000),
+    timerIdRed = setInterval(redObstacles, 1800),
+    timerIdYellow = setInterval(yellowObstacles,2000),
     leftCol = 1,
     rightCol = 21;
 
 // Instanciación de los obstáculos filas impares (sección inferior)
 function redObstacles() {
     for (let fila = 17; fila >= 11; fila -= 2) {
-        if (Math.round(Math.random() * 10) === 3) {
+        if (Math.ceil(Math.random() * 3) > 1) {
             var obstacle = new RedObstacles(fila);
             obstacle.spawn();
         }
@@ -26,7 +26,7 @@ function redObstacles() {
 // ENEMIGOS AMARILLOS
 function yellowObstacles() {
     for (let fila = 16; fila > 10; fila -= 2) {
-        if (Math.round(Math.random() * 8) === 2) {
+        if (Math.ceil(Math.random() * 3) > 1) {
             var obstacle = new YellowObstacles(fila);
             obstacle.spawn();
     }
@@ -66,7 +66,6 @@ window.addEventListener("keyup", function (e) {
 
 function gameLoop() {
     if (!gameOver) {
-        objSoap.collision();
         objSoap.move();
     }
 }

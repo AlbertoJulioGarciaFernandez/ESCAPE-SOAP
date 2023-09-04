@@ -2,7 +2,7 @@ function RedObstacles(fila) {
     var self = this;
     this.oddY = fila;
     this.oddX = 1;
-    this.speed = 1000;
+    this.speed = 800;
     this.timerId;
     this.obsCell;
 

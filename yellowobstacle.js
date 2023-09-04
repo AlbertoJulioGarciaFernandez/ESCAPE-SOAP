@@ -2,27 +2,44 @@ function YellowObstacles(fila) {
     var self = this;
     this.oddY = fila;
     this.oddX = 21;
-    this.lenght = 3;
-    this.speed = 800;
+    this.length = 3;
+    this.speed = 400;
     this.timerId;
-    this.obsCell;
+    this.obsCells = []; //this.obsCells = [21, 22, 23]
 
     this.move = function () {
-        for(let i = self.oddX; i < self.oddX + self.length; i++)
-        if (self.oddX > 1) {
-            self.obsCell.classList.remove("obs2");
-            self.oddX--
-            self.obsCell = document.querySelector(`.row${self.oddY} .column${self.oddX}`);
-            self.obsCell.classList.add("obs2");
-        } else {
-            self.obsCell.classList.remove("obs2");
-            clearInterval(this.timerId)
+        self.erase();
+        for (let i = 0; i < self.obsCells.length; i++) {
+            self.obsCells[i]--;
         }
+        self.draw();
     };
 
+    this.draw = function () {
+        for (let i = 0; i < this.obsCells.length; i++) {
+            var column = this.obsCells[i]
+            if (column >= 1 && column <= 21) {
+                var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
+                newCell.classList.add("obs2");
+            }
+        }
+    }
+
+    this.erase = function () {
+        for (let i = 0; i < this.obsCells.length; i++) {
+            var column = this.obsCells[i]
+            if (column >= 1 && column <= 21) {
+                var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
+                newCell.classList.remove("obs2");
+            }
+        }
+    }
+
     this.spawn = function () {
-        this.obsCell = document.querySelector(`.row${this.oddY} .column${this.oddX}`);
-        this.obsCell.classList.add("obs2");
+        for (let i = this.oddX; i < this.oddX + this.length; i++) {
+            this.obsCells.push(i)
+        }
+        this.draw();
         this.timerId = setInterval(this.move, this.speed);
     };
 }

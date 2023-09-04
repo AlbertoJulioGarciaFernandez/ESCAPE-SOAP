@@ -20,18 +20,19 @@ function Soap(enemy) {
             if (self.y > 1) {
                 var checkEnemy = document.querySelector(`.row${frontCell} .column${self.x}`);
                 if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
+                    console.log("Up")
                     setGameOver(true);
                 }
             }
         }
 
         var leftCell = self.x;
-
         leftCell -= 1;
 
         if (self.x > 1) {
             var checkEnemy = document.querySelector(`.row${self.y} .column${leftCell}`);
             if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
+                console.log("Left")
                 setGameOver(true);
             }
         }
@@ -42,11 +43,13 @@ function Soap(enemy) {
         if (self.x < 21) {
             var checkEnemy = document.querySelector(`.row${self.y} .column${rightCell}`);
             if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
+                console.log("Right")
                 setGameOver(true);
             }
         }
     }
     this.move = function () {
+        console.log(self.direction)
         self.collision();
         switch (self.direction) {
             case "up":
