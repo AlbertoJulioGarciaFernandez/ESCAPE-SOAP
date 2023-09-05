@@ -25,4 +25,4 @@ function YellowObstacles(row, column) {
     };
   }
   
-  export { YellowObstacles };  
+  export { YellowObstacles };

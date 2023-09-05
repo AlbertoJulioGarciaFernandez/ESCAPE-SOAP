@@ -1,5 +1,3 @@
-import { gameOver, setGameOver } from "./index.js";
-
 function Soap(x, y) {
   var self = this;
   this.x = x;
@@ -16,7 +14,8 @@ function Soap(x, y) {
     if (
       checkEnemy.classList.contains("obs1") ||
       checkEnemy.classList.contains("obs2") ||
-      checkEnemy.classList.contains("obs3")
+      checkEnemy.classList.contains("obs3") ||
+      checkEnemy.classList.contains("obs4")
     ) {
       return true;
     }

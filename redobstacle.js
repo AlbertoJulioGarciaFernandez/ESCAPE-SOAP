@@ -26,4 +26,3 @@ function RedObstacles(row, column) {
   }
   
   export { RedObstacles };
-  

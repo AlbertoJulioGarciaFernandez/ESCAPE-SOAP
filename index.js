@@ -8,26 +8,42 @@ var gameOver = false,
     objSoap = new Soap(11, 20),
     timerId = setInterval(gameLoop, 10),
     timerIdRed = setInterval(moveRedObstacles, 800),
-    timerIdYellow = setInterval(moveYellowObstacles, 900),
-    timerIdPink = setInterval(movePinkObstacles, 500),
-    /*timerIdGreen = setInterval(greenObstacles, 5000),*/
+    timerIdYellow = setInterval(moveYellowObstacles, 300),
+    timerIdPink = setInterval(movePinkObstacles, 300),
+    timerIdGreen = setInterval(moveGreenObstacles, 800),
     leftCol = 1,
-    rightCol = 21;
-var redObstacles = [];
-var yellowObstacles = [];
-var pinkObstacles = [];
+    rightCol = 21,
+    redObstacles = [],
+    yellowObstacles = [],
+    pinkObstacles = [],
+    greenObstacles = [];
 
 createBoard();
 setInterval(addNewRedObstacle, 4000);
-setInterval(addNewYellowObstacle, 3000);
+setInterval(addNewYellowObstacle, 2000);
 setInterval(addNewPinkObstacle, 2500);
+setInterval(addNewGreenObstacle, 3000);
 
 function createBoard() {
     createInitialRedObstacles();
     createInitialYellowObstacles();
     createInitialPinkObstacles();
+    createInitialGreenObstacles();
 }
 
+//CHECK IF AVAILABLE
+function isColumnAvailableForObstacle(row, column, distance, obstacles) {
+    for (const obstacle of obstacles) {
+        if (obstacle.oddY === row) {
+            if (Math.abs(obstacle.oddX - column) < distance) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+//RED OBSTACLES
 function createInitialRedObstacles() {
     for (let row = 17; row >= 11; row -= 2) {
         var column = Math.floor(Math.random() * 21);
@@ -47,17 +63,6 @@ function addNewRedObstacle() {
     }
 }
 
-function isColumnAvailableForObstacle(row, column, distance, obstacles) {
-    for (const obstacle of obstacles) {
-        if (obstacle.oddY === row) {
-            if (Math.abs(obstacle.oddX - (column)) < distance) {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 function moveRedObstacles() {
     for (let i = 0; i < redObstacles.length; i++) {
         //for (const redObstacle of redObstacles) {
@@ -65,8 +70,7 @@ function moveRedObstacles() {
     }
 }
 
-// Instanciación de los obstáculos filas pares (sección inferior)
-// ENEMIGOS AMARILLOS
+// YELLOW OBSTACLES
 function createInitialYellowObstacles() {
     for (let row = 16; row >= 12; row -= 2) {
         var column = Math.floor(Math.random() * 19);
@@ -86,7 +90,7 @@ function moveYellowObstacles() {
 function addNewYellowObstacle() {
     var rowRange = Math.floor(Math.random() * 2);
     var row = rowRange === 0 ? 16 : rowRange === 1 ? 14 : 12;
-    var column = Math.floor(Math.random() * 19);
+    var column = Math.floor(Math.random() * 16) + 2;
     if (isColumnAvailableForObstacle(row, column, 6, yellowObstacles)) {
         for (let i = 0; i < 3; i++) {
             const obstacle = new YellowObstacles(row, column + i);
@@ -95,10 +99,10 @@ function addNewYellowObstacle() {
     }
 }
 
-//PINK OBS
+//PINK OBSTACLES
 function createInitialPinkObstacles() {
     for (let row = 9; row > 2; row -= 2) {
-        var column = Math.floor(Math.random() * 19);
+        var column = Math.floor(Math.random() * 16) + 2;
         for (let i = 0; i < 2; i++) {
             const obstacle = new PinkObstacles(row, column + i);
             pinkObstacles.push(obstacle);
@@ -113,10 +117,10 @@ function movePinkObstacles() {
 }
 
 function addNewPinkObstacle() {
-    var rowRange = Math.floor(Math.random() * 2);
+    var rowRange = Math.floor(Math.random() * 3);
     var row = rowRange === 0 ? 9 : rowRange === 1 ? 7 : rowRange === 2 ? 5 : 3;
-    var column = Math.floor(Math.random() * 19);
-    if (isColumnAvailableForObstacle(row, column, 5, pinkObstacles)) {
+    var column = Math.floor(Math.random() * 13) + 2;
+    if (isColumnAvailableForObstacle(row, column, 8, pinkObstacles)) {
         for (let i = 0; i < 3; i++) {
             const obstacle = new PinkObstacles(row, column + i);
             pinkObstacles.push(obstacle);
@@ -124,7 +128,36 @@ function addNewPinkObstacle() {
     }
 }
 
+//GREEN OBSTACLES
+function createInitialGreenObstacles() {
+    for (let row = 8; row > 2; row -= 2) {
+        var column = Math.floor(Math.random() * 19) + 2;
+        for (let i = 0; i < 4; i++) {
+            const obstacle = new GreenObstacles(row, column + i);
+            greenObstacles.push(obstacle);
+        }
+    }
+}
 
+function moveGreenObstacles() {
+    for (let i = greenObstacles.length - 1; i >= 0; i--) {
+        greenObstacles[i].move();
+    }
+}
+
+function addNewGreenObstacle() {
+    var rowRange = Math.floor(Math.random() * 2);
+    var row = rowRange === 0 ? 8 : rowRange === 1 ? 6 : 4;
+    var column = Math.floor(Math.random() * 14) + 4;
+    if (isColumnAvailableForObstacle(row, column, 8, greenObstacles)) {
+        for (let i = 0; i < 3; i++) {
+            const obstacle = new GreenObstacles(row, column + i);
+            greenObstacles.push(obstacle);
+        }
+    }
+}
+
+//GAME OVER
 function setGameOver(value) {
     gameOver = value;
     if (gameOver) {
