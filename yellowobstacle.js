@@ -1,52 +1,28 @@
-function YellowObstacles(fila) {
+function YellowObstacles(row, column) {
     var self = this;
-    this.oddY = fila;
-    this.oddX = 21;
-    this.length = 3;
-    this.speed = 400;
-    this.timerId;
-    this.obsCells = []; //this.obsCells = [21, 22, 23]
-
+    this.oddY = row;
+    this.oddX = column;
+    this.obsCell;
+  
     this.move = function () {
-        self.erase();
-        for (let i = 0; i < self.obsCells.length; i++) {
-            self.obsCells[i]--;
+      if (self.oddX > 1) {
+        if (self.obsCell !== undefined) {
+          self.obsCell.classList.remove("obs2");
         }
-        /*self.obsCells[0]
-        var head = document.querySelector(`.row${self.oddY} .column${self.obsCells[0]}`);
-            if (head.classList.contains("soap")){
-                alert("Kicked")
-            }*/
-        self.draw();
+        self.oddX--;
+        self.obsCell = document.querySelector(
+          `.row${self.oddY} .column${self.oddX}`
+        );
+        self.obsCell.classList.add("obs2");
+      } else {
+        if (self.obsCell !== undefined) {
+          self.obsCell.classList.remove("obs2");
+        }
+        self.obsCell = document.querySelector(`.row${self.oddY} .column` + "21");
+        self.obsCell.classList.add("obs2");
+        self.oddX = 21;
+      }
     };
-
-    this.draw = function () {
-        for (let i = 0; i < this.obsCells.length; i++) {
-            var column = this.obsCells[i]
-            if (column >= 1 && column <= 21) {
-                var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
-                newCell.classList.add("obs2");
-            }
-        }
-    }
-
-    this.erase = function () {
-        for (let i = 0; i < this.obsCells.length; i++) {
-            var column = this.obsCells[i]
-            if (column >= 1 && column <= 21) {
-                var newCell = document.querySelector(`.row${self.oddY} .column${column}`);
-                newCell.classList.remove("obs2");
-            }
-        }
-    }
-
-    this.spawn = function () {
-        for (let i = this.oddX; i < this.oddX + this.length; i++) {
-            this.obsCells.push(i)
-        }
-        this.draw();
-        this.timerId = setInterval(this.move, this.speed);
-    };
-}
-
-export { YellowObstacles }
+  }
+  
+  export { YellowObstacles };  

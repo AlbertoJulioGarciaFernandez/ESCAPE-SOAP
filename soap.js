@@ -1,87 +1,66 @@
 import { gameOver, setGameOver } from "./index.js";
 
-function Soap() {
-    var self = this;
-    this.x = 11;
-    this.y = 20;
-    this.direction = null;
+function Soap(x, y) {
+  var self = this;
+  this.x = x;
+  this.y = y;
+  this.direction = null;
 
-    this.draw = function () {
+  this.draw = function () {
+    var soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
+    soapCell.classList.add("soap");
+  };
+
+  this.collision = function () {
+    var checkEnemy = document.querySelector(`.row${self.y} .column${self.x}`);
+    if (
+      checkEnemy.classList.contains("obs1") ||
+      checkEnemy.classList.contains("obs2") ||
+      checkEnemy.classList.contains("obs3")
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  this.move = function (direction) {
+    switch (direction) {
+      case "up":
         var soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
+        soapCell.classList.remove("soap");
+        self.y--;
+        soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
         soapCell.classList.add("soap");
-    }
-
-    this.collision = function () {
-        if (self.direction === 'up') {
-
-            var frontCell = self.y;
-            frontCell -= 1;
-
-            if (self.y > 1) {
-                var checkEnemy = document.querySelector(`.row${frontCell} .column${self.x}`);
-                if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
-                    setGameOver(true);
-                }
-            }
+        if (self.y === 1) {
+          alert("YOU WIN!");
         }
 
-        var leftCell = self.x;
-        leftCell -= 1;
-
+        break;
+      case "left":
         if (self.x > 1) {
-            var checkEnemy = document.querySelector(`.row${self.y} .column${leftCell}`);
-            if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
-                setGameOver(true);
-            }
+          var soapCell = document.querySelector(
+            `.row${self.y} .column${self.x}`
+          );
+          soapCell.classList.remove("soap");
+          self.x--;
+          soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
+          soapCell.classList.add("soap");
         }
 
-        var rightCell = self.x;
-        rightCell += 1;
-
+        break;
+      case "right":
         if (self.x < 21) {
-            var checkEnemy = document.querySelector(`.row${self.y} .column${rightCell}`);
-            if (checkEnemy.classList.contains("obs1") || checkEnemy.classList.contains("obs2")) {
-                setGameOver(true);
-            }
+          var soapCell = document.querySelector(
+            `.row${self.y} .column${self.x}`
+          );
+          soapCell.classList.remove("soap");
+          self.x++;
+          soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
+          soapCell.classList.add("soap");
         }
+        break;
     }
-    
-    this.move = function () {
-
-       /* self.collision();*/
-        switch (self.direction) {
-            case "up":
-                var soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
-                soapCell.classList.remove('soap');
-                self.y--;
-                soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
-                soapCell.classList.add("soap")
-                if (self.y === 1) {
-                    alert('YOU WIN!');
-                }
-
-                break;
-            case "left":
-                if (self.x > 1) {
-                    var soapCell = document.querySelector(`.row${self.y} .column${self.x}`)
-                    soapCell.classList.remove('soap');
-                    self.x--;
-                    soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
-                    soapCell.classList.add("soap");
-                }
-
-                break;
-            case "right":
-                if (self.x < 21) {
-                    var soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
-                    soapCell.classList.remove('soap');
-                    self.x++;
-                    soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
-                    soapCell.classList.add("soap");
-                }
-                break;
-        }
-    }
+  };
 }
 
-export { Soap }
+export { Soap };
