@@ -18,15 +18,9 @@ var gameOver = false,
     timerIdAddRed,
     timerIdAddYellow,
     timerIdAddPink,
-    timerIdAddGreen,
-    startGameSound = new Audio('./sound/press-start.mp3'),
-    inGameMusic = new Audio('./sound/in-game.mp3'),
-    gameOverSound = new Audio('./sound/game-over.mp3');
+    timerIdAddGreen;
 
 function initGame() {
-    inGameMusic.play();
-    inGameMusic.volume = 0.1;
-
     createBoard();
     timerIdAddRed = setInterval(addNewRedObstacle, 4000);
     timerIdAddYellow = setInterval(addNewYellowObstacle, 2000);
@@ -178,12 +172,7 @@ function addNewGreenObstacle() {
 function setGameOver(value) {
     gameOver = value;
     if (gameOver) {
-        inGameMusic.pause();
-        gameOverSound.play();
-        gameOverSound.volume = 0.1;
         var endGame = document.getElementsByClassName("ending")[0]
-        //Cambiar ID de imagen por div (img + button)
-        //Llamar button
         endGame.classList.remove("hidden")
         clearInterval(timerId);
         clearInterval(timerIdRed);
@@ -211,8 +200,6 @@ function setGameOver(value) {
 
 //START GAME
 var start = document.getElementById("start")
-var openButton = document.getElementById("start-button");
-//Llamar div y button
 
 //RESTART GAME
 var restartButtons = document.querySelectorAll(".restart")
@@ -222,16 +209,10 @@ restartButtons.forEach(function(restartButton) {
     })
 })
 
-start.addEventListener("click", function () {
-    setTimeout(hideStartScreenShowGame, 2500);
-    startGameSound.play();
-    startGameSound.volume = 0.1;
-});
-
-function hideStartScreenShowGame() {
+start.addEventListener("click", function (e) {
     start.classList.add("hidden")
     initGame();
-}
+})
 
 //Evento click button Game Over
 
@@ -258,4 +239,4 @@ function gameLoop() {
 
 
 
-export { gameOver, setGameOver, inGameMusic };
+export { gameOver, setGameOver };
