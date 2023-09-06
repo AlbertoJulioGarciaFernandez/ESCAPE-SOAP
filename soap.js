@@ -31,7 +31,8 @@ function Soap(x, y) {
         soapCell = document.querySelector(`.row${self.y} .column${self.x}`);
         soapCell.classList.add("soap");
         if (self.y === 1) {
-          alert("YOU WIN!");
+          var win = document.querySelector(`.win`);
+          win.classList.remove('hidden')
         }
 
         break;

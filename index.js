@@ -172,7 +172,7 @@ function addNewGreenObstacle() {
 function setGameOver(value) {
     gameOver = value;
     if (gameOver) {
-        var endGame = document.getElementById("ending")
+        var endGame = document.getElementsByClassName("ending")[0]
         //Cambiar ID de imagen por div (img + button)
         //Llamar button
         endGame.classList.remove("hidden")
@@ -205,12 +205,16 @@ var start = document.getElementById("start")
 var openButton = document.getElementById("start-button");
 //Llamar div y button
 
-
+//RESTART GAME
+var restartButtons = document.querySelectorAll(".restart")
+restartButtons.forEach(function(restartButton) {
+    restartButton.addEventListener('click', function() {
+        location.reload()
+    })
+})
 
 start.addEventListener("click", function (e) {
     start.classList.add("hidden")
-    var canvas = document.getElementById("canvas")
-    canvas.classList.remove("hidden")
     initGame();
 })
 
@@ -236,5 +240,7 @@ function gameLoop() {
         setGameOver(true);
     }
 }
+
+
 
 export { gameOver, setGameOver };

@@ -13,20 +13,19 @@
 </head>
 
 <body>
+    <div class="ending hidden">
+        <h1>GAME OVER</h1>
+        <img id="soapgo" src="./img/soap_game_over.png" alt="">
+        <button class="restart">MAIN MENU</button>
+    </div>
+    <div id="start"></div>
+    <div class="win hidden">
+        <h1>WIN</h1>
+        <img id="soapgo" src="./img/soap_win.png" alt="">
+        <button class="restart">MAIN MENU</button>
+    </div>    
+
     <div id="container">
-        <div id="start">
-            <button type="button" id="start-button"></button>
-        </div>
-        <div id="bathroom"></div>
-
-        <div id="backgroundgo">
-            <div id="ending"><h1>GAME OVER</h1>
-                <img id="soapgo" src="./img/soap_game_over.png" alt="">
-            </div>
-        </div>
-
-
-        <div id="canvas">
             <table id="table">
                 <tr class="row1">
                     <td class="column1"></td>
@@ -373,6 +372,8 @@
                     <td class="column20"></td>
                     <td class="column21"></td>
                 </tr>
+            
+            
                 <tr class="row16">
                     <td class="column1"></td>
                     <td class="column2"></td>
@@ -419,6 +420,7 @@
                     <td class="column20"></td>
                     <td class="column21"></td>
                 </tr>
+            <tfoot class="safe-area">
                 <tr class="row18">
                     <td class="column1"></td>
                     <td class="column2"></td>
@@ -489,7 +491,8 @@
                     <td class="column21"></td>
                 </tr>
             </table>
-        </div>
+        
+        </tfoot>
     </div>
 </body>
 

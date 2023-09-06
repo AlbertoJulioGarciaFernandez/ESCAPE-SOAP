@@ -3,55 +3,78 @@
 }
 
 body {
-
+    background-image: url(./img/bathroom_background.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0 auto;
+    position: relative;
 }
 
-#canvas {
+#table {
+    /* borde */
+    background-color: #43C6FF;
+    background-image: url(./img/bubbles.png);
+    background-size: contain;
+    /* lo demás */
+    border-image-source: url(./img/espejo.jpg);
+    border-radius: 5px;
+    border-image-slice: 100%;
+    border-image-width: 5px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 200;
+    position: relative;
     width: 720px;
-    background-color: green;
-    margin: 0 auto;
-    margin-top: 200px;
-    position: absolute;
+    height: 720px;
     z-index: 0;
 }
 
 td {
-    background-color: darkgreen;
     height: 30px;
     width: 30px;
 }
 
 .soap {
-    background-color: aqua;
+    background-image: url(./img/soap_player.png);
+    background-size: 100%;
 }
 
-.safe-area td {
-    background-color: blue;
+.safe-area {
+    background-image: url(./img/bubbles.gif);
+    background-size: 50px;
 }
 
 .obs1 {
-    background-color: red;
+    background-image: url(./img/red.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .obs2 {
-    background-color: yellow;
+    background-image: url(./img/yellow.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .obs3 {
-    background-color: deeppink;
+    background-image: url(./img/purple.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .obs4 {
-    background-color: greenyellow;
+    background-image: url(./img/green.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 #container {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    margin: 0 auto;
-    /*margin-top: 5vh;*/
     position: relative;
 }
 
@@ -59,64 +82,88 @@ td {
     background-image: url(./img/bathroom_background.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1080px;
-    width: 1920px;
+    height: 100vh;
+    width: 100vw;;
     z-index: -1;
     position: absolute;
     margin-top: 50px;
+    opacity: 100%;
 }
 
-.hidden {
-    display: none;
-}
-
+/* 
 #start-button {
     background-color: red;
     height: 200px;
     width: 200px;
     position: relative;
 }
-
+ */
 #start {
-   /* background-image: url(./img/start_display.png);*/
-    height: 1080px;
-    width: 1920px;
+    background-image: url(./img/start_display.png);
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100vw;
     z-index: 1;
     position: absolute;
-    margin-top: 50px;
     opacity: 100%;
     background-repeat: no-repeat;
 }
 
-#backgroundgo {
+.ending {
     background-color: black;
+    text-align: center;
     background-size: cover;
-    height: 1080px;
-    width: 1920px;
+    height: 100vh;
+    width: 100vw;
+    background-size: 100% 100%;
     z-index: 1;
+    top: 0px;
+    left: 0px;
     position: absolute;
-    margin-top: 50px;
-    opacity: 20%;
+    opacity: 100%;
+    background-image: url(./img/bubbles2.gif);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#ending {
-    background-image: url(./img/bubbles2.gif);
-    background-size: cover;
-    height: 1080px;
-    width: 1920px;
-    z-index: 1;
-    position: absolute;
-}
 
 #soapgo {
     height: 250px;
     width: 400px;
-    margin-left: 650px;
 }
 
 h1 {
     color: white;
-    margin-top: 400px;
     font-size: 200px;
-    margin-left: 600px;
+    margin: 10px;
+}
+
+#restart {
+    display: block;
+    margin: 50px;
+}
+
+.win {
+    background-color: black;
+    text-align: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-size: 100% 100%;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    opacity: 100%;
+    background-image: url(./img/universe_win.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
 }
