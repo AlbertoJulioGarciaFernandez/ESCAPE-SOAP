@@ -18,9 +18,15 @@ var gameOver = false,
     timerIdAddRed,
     timerIdAddYellow,
     timerIdAddPink,
-    timerIdAddGreen;
+    timerIdAddGreen,
+    startGameSound = new Audio('./sound/press-start.mp3'),
+    inGameMusic = new Audio('./sound/in-game.mp3'),
+    gameOverSound = new Audio('./sound/game-over.mp3');
 
 function initGame() {
+    inGameMusic.play();
+    inGameMusic.volume = 0.1;
+
     createBoard();
     timerIdAddRed = setInterval(addNewRedObstacle, 4000);
     timerIdAddYellow = setInterval(addNewYellowObstacle, 2000);
@@ -76,7 +82,6 @@ function addNewRedObstacle() {
 
 function moveRedObstacles() {
     for (let i = 0; i < redObstacles.length; i++) {
-        //for (const redObstacle of redObstacles) {
         redObstacles[i].move();
     }
 }
@@ -172,6 +177,9 @@ function addNewGreenObstacle() {
 function setGameOver(value) {
     gameOver = value;
     if (gameOver) {
+        inGameMusic.pause();
+        gameOverSound.play();
+        gameOverSound.volume = 0.1;
         var endGame = document.getElementsByClassName("ending")[0]
         endGame.classList.remove("hidden")
         clearInterval(timerId);
@@ -209,13 +217,16 @@ restartButtons.forEach(function(restartButton) {
     })
 })
 
-start.addEventListener("click", function (e) {
+start.addEventListener("click", function () {
+    setTimeout(hideStartScreenShowGame, 2500);
+    startGameSound.play();
+    startGameSound.volume = 0.1;
+});
+
+function hideStartScreenShowGame() {
     start.classList.add("hidden")
     initGame();
-})
-
-//Evento click button Game Over
-
+}
 
 window.addEventListener("keydown", function (e) {
     switch (e.key) {
@@ -237,6 +248,4 @@ function gameLoop() {
     }
 }
 
-
-
-export { gameOver, setGameOver };
+export { gameOver, setGameOver, inGameMusic };
