@@ -39,7 +39,8 @@ td {
 
 .soap {
     background-image: url(./img/soap_player.png);
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 .safe-area {
