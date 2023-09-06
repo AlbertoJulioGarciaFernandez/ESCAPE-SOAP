@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url(https://fonts.googleapis.com/css?family=VT323);
 
 * {
     font-family: 'VT323', monospace;
@@ -87,7 +86,6 @@ td {
     background-size: cover;
     height: 100vh;
     width: 100vw;
-    ;
     z-index: -1;
     position: absolute;
     margin-top: 50px;
