@@ -35,16 +35,6 @@ function initGame() {
     objSoap.draw();
 }
 
-var opening = document.getElementById("opening")
-//Llamar div y button
-
-opening.addEventListener("click", function (e) {
-    opening.classList.add("hidden")
-    var canvas = document.getElementById("canvas")
-    canvas.classList.remove("hidden")
-    initGame();
-})
-
 function createBoard() {
     createInitialRedObstacles();
     createInitialYellowObstacles();
@@ -209,6 +199,20 @@ function setGameOver(value) {
         })
     }
 }
+
+//START GAME
+var start = document.getElementById("start")
+var openButton = document.getElementById("start-button");
+//Llamar div y button
+
+
+
+start.addEventListener("click", function (e) {
+    start.classList.add("hidden")
+    var canvas = document.getElementById("canvas")
+    canvas.classList.remove("hidden")
+    initGame();
+})
 
 //Evento click button Game Over
 
