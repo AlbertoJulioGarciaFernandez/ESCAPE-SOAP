@@ -1,5 +1,4 @@
 #canvas {
-
     width: 720px;
     background-color: green;
     margin: 0 auto;
@@ -11,12 +10,10 @@ td {
     background-color: darkgreen;
     height: 30px;
     width: 30px;
-
 }
 
 .soap {
     background-color: aqua;
-    background-image: url(./Imágenes/pixil-frame-0.jpg);
 }
 
 .safe-area td {
@@ -37,4 +34,15 @@ td {
 
 .obs4 {
     background-color: greenyellow;
+}
+
+.end {
+    height: 100%;
+    width: 100%;
+    z-index: +1;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
 }

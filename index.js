@@ -1,28 +1,45 @@
-import { RedObstacles } from "./redobstacle.js";
 import { Soap } from "./soap.js";
+import { RedObstacles } from "./redobstacle.js";
 import { YellowObstacles } from "./yellowobstacle.js";
 import { PinkObstacles } from "./pinkobstacle.js";
 import { GreenObstacles } from "./greenobstacle.js";
 
 var gameOver = false,
-    objSoap = new Soap(11, 20),
-    timerId = setInterval(gameLoop, 10),
-    timerIdRed = setInterval(moveRedObstacles, 800),
-    timerIdYellow = setInterval(moveYellowObstacles, 300),
-    timerIdPink = setInterval(movePinkObstacles, 300),
-    timerIdGreen = setInterval(moveGreenObstacles, 800),
-    leftCol = 1,
-    rightCol = 21,
+    objSoap,
+    timerId,
+    timerIdRed,
+    timerIdYellow,
+    timerIdPink,
+    timerIdGreen,
     redObstacles = [],
     yellowObstacles = [],
     pinkObstacles = [],
     greenObstacles = [];
 
-createBoard();
-setInterval(addNewRedObstacle, 4000);
-setInterval(addNewYellowObstacle, 2000);
-setInterval(addNewPinkObstacle, 2500);
-setInterval(addNewGreenObstacle, 3000);
+function initGame() {
+    createBoard();
+    setInterval(addNewRedObstacle, 4000);
+    setInterval(addNewYellowObstacle, 2000);
+    setInterval(addNewPinkObstacle, 2500);
+    setInterval(addNewGreenObstacle, 3000);
+    objSoap = new Soap(11, 20);
+    objSoap.draw();
+    timerId = setInterval(gameLoop, 10);
+    timerIdRed = setInterval(moveRedObstacles, 800);
+    timerIdYellow = setInterval(moveYellowObstacles, 300);
+    timerIdPink = setInterval(movePinkObstacles, 300);
+    timerIdGreen = setInterval(moveGreenObstacles, 800);
+}
+
+var opening = document.getElementById("opening")
+//Llamar div y button
+
+opening.addEventListener("click", function (e) {
+    opening.classList.add("hidden")
+    var canvas = document.getElementById("canvas")
+    canvas.classList.remove("hidden")
+    initGame();
+})
 
 function createBoard() {
     createInitialRedObstacles();
@@ -46,8 +63,8 @@ function isColumnAvailableForObstacle(row, column, distance, obstacles) {
 //RED OBSTACLES
 function createInitialRedObstacles() {
     for (let row = 17; row >= 11; row -= 2) {
-        var column = Math.floor(Math.random() * 21);
-        var obstacle = new RedObstacles(row, column);
+        const column = Math.floor(Math.random() * 21);
+        const obstacle = new RedObstacles(row, column);
         redObstacles.push(obstacle);
     }
 }
@@ -161,12 +178,20 @@ function addNewGreenObstacle() {
 function setGameOver(value) {
     gameOver = value;
     if (gameOver) {
-        alert("GAME OVER");
+        var endGame = document.getElementById("ending")
+        //Cambiar ID de imagen por div (img + button)
+        //Llamar button
+        endGame.classList.remove("hidden")
         clearInterval(timerId);
+        clearInterval(timerIdRed);
+        clearInterval(timerIdYellow);
+        clearInterval(timerIdPink);
+        clearInterval(timerIdGreen);
     }
 }
 
-objSoap.draw();
+//Evento click button Game Over
+
 
 window.addEventListener("keydown", function (e) {
     switch (e.key) {
