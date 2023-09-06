@@ -14,21 +14,25 @@ var gameOver = false,
     redObstacles = [],
     yellowObstacles = [],
     pinkObstacles = [],
-    greenObstacles = [];
+    greenObstacles = [],
+    timerIdAddRed,
+    timerIdAddYellow,
+    timerIdAddPink,
+    timerIdAddGreen;
 
 function initGame() {
     createBoard();
-    setInterval(addNewRedObstacle, 4000);
-    setInterval(addNewYellowObstacle, 2000);
-    setInterval(addNewPinkObstacle, 2500);
-    setInterval(addNewGreenObstacle, 3000);
-    objSoap = new Soap(11, 20);
-    objSoap.draw();
+    timerIdAddRed = setInterval(addNewRedObstacle, 4000);
+    timerIdAddYellow = setInterval(addNewYellowObstacle, 2000);
+    timerIdAddPink = setInterval(addNewPinkObstacle, 2500);
+    timerIdAddGreen = setInterval(addNewGreenObstacle, 3000);
     timerId = setInterval(gameLoop, 10);
     timerIdRed = setInterval(moveRedObstacles, 800);
     timerIdYellow = setInterval(moveYellowObstacles, 300);
     timerIdPink = setInterval(movePinkObstacles, 300);
     timerIdGreen = setInterval(moveGreenObstacles, 800);
+    objSoap = new Soap(11, 20);
+    objSoap.draw();
 }
 
 var opening = document.getElementById("opening")
@@ -187,6 +191,22 @@ function setGameOver(value) {
         clearInterval(timerIdYellow);
         clearInterval(timerIdPink);
         clearInterval(timerIdGreen);
+        clearInterval(timerIdAddRed);
+        clearInterval(timerIdAddYellow);
+        clearInterval(timerIdAddPink);
+        clearInterval(timerIdAddGreen);
+        redObstacles = [];
+        yellowObstacles = [];
+        pinkObstacles = [];
+        greenObstacles = [];
+        var allCells = document.querySelectorAll("td");
+        allCells.forEach(function(cell){
+            cell.classList.remove("obs1");
+            cell.classList.remove("obs2");
+            cell.classList.remove("obs3");
+            cell.classList.remove("obs4");
+            cell.classList.remove("soap");
+        })
     }
 }
 
