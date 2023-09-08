@@ -28,10 +28,10 @@ function initGame() {
     inGameMusic.volume = 0.1;
 
     createBoard();
-    timerIdAddRed = setInterval(addNewRedObstacle, 4000);
-    timerIdAddYellow = setInterval(addNewYellowObstacle, 2000);
-    timerIdAddPink = setInterval(addNewPinkObstacle, 2500);
-    timerIdAddGreen = setInterval(addNewGreenObstacle, 3000);
+    timerIdAddRed = setInterval(addNewRedObstacle, 5000);
+    timerIdAddYellow = setInterval(addNewYellowObstacle, 3000);
+    timerIdAddPink = setInterval(addNewPinkObstacle, 3500);
+    timerIdAddGreen = setInterval(addNewGreenObstacle, 4000);
     timerId = setInterval(gameLoop, 10);
     timerIdRed = setInterval(moveRedObstacles, 800);
     timerIdYellow = setInterval(moveYellowObstacles, 300);
